@@ -1,21 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ titulo }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>Bienvenido, {{ usuario }}</h1>
-        <p>FastAPI Starter de arquitectura limpia.</p>
-        
-        <h3>Tecnologías configuradas:</h3>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='/css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="brand">EAN</div>
+      <div class="menu-links"></div>
+    </nav>
+
+    <div class="main-container">
+      <h1>{{ mensaje }}</h1>
+      <p>Panel de gestión de <strong>{{ usuario }}</strong>.</p>
+
+      <div class="product-form">
+        <h3>Añadir Nuevo Producto</h3>
+        <form action="/productos" method="post">
+          <div class="form-group">
+            <label for="nombre">Nombre del Producto:</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Ej: Teclado Mecánico"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="correo">Email del proveedor:</label>
+            <input type="email" name="correo" required />
+          </div>
+          <button type="submit">Guardar Producto</button>
+        </form>
+      </div>
+      <div class="product-list">
+        <h3>Productos en inventario:</h3>
         <ul>
-            {% for tech in tecnologias %}
-                <li>{{ tech }}</li>
-            {% endfor %}
+          {% for p in productos %}
+          <li>{{ p }}</li>
+          {% endfor %}
         </ul>
+      </div>
     </div>
-</body>
+  </body>
 </html>
