@@ -1,6 +1,17 @@
 # FastAPI Starter - Clean Architecture
 Proyecto Starter para Python FastAPI utilizando clean architecture
 
+### [V0.0.4] Gestionar Objetos - 2026-2-20
+- **Pruebas:** ✅ Todo ok.
+- **Pruebas:** ✅ En lugar de recibir `String` vamos a recibir un `Objeto`
+- **Pruebas:** ✅ Probar introducción de datos y recepción de datos en la lista.
+- **Estructura:** Añadir el molde de los datos  `app/schemas/product.py`
+- **__init__.py:** Añadir este archivo a todas las carpetas para que sean consideradas como módulos.
+- **main.py:** Cambiar la lista de "nombres" por una lista de "objetos".
+- **HTML:** Añadir código para formulario  `/templates/index.html`
+- **CSS:** Añadir estilos para tablas nuevas.
+- **README:** Añadir descripción, imagen y detalles.
+
 ### [V0.0.3] Guardar datos de Formulario - 2026-2-20
 - **Pruebas:** ✅ Todo ok.
 - **Pruebas:** ✅ Implementar formulario y recibir esos datos introducidos en una lista Python.

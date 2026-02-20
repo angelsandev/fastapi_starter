@@ -1,6 +1,39 @@
 # 🚀 FastAPI Starter - Clean Architecture
 
-Este proyecto utiliza una estructura de **Arquitectura Limpia** para separar las responsabilidades y facilitar el escalado.
+Este es un proyecto base (Starter) desarrollado con **FastAPI** que implementa una estructura profesional para la gestión de un inventario simple.
+
+## 🚀 Implementación:
+
+* **Estructura Profesional:** Organización de carpetas siguiendo principios de separación de responsabilidades (app, static, templates, schemas).
+* **Motor de Plantillas:** Integración de **Jinja2** para renderizar HTML dinámico desde el backend.
+* **Estilos Globales:** Uso de archivos CSS estáticos para un diseño moderno con un Navbar personalizado (**EAN**).
+* **Modelos de Datos con Pydantic:** Uso de `BaseModel` para definir y validar la estructura de los productos (Nombre, Precio, Email).
+* **Gestión de Formularios:** Captura de datos enviados por el usuario mediante métodos `POST` y uso de `Form` de FastAPI.
+* **Persistencia Temporal (In-Memory):** Los datos se almacenan en un diccionario dentro de una lista de Python (`db_temporal`) durante la sesión del servidor.
+* **Redirecciones Seguras:** Implementación de `RedirectResponse` con código de estado **303** para evitar el reenvío duplicado de formularios tras el guardado.
+
+## 🛠️ Tecnologías utilizadas:
+* **Python 3.14+**
+* **FastAPI** (Framework web)
+* **Uvicorn** (Servidor ASGI)
+* **Jinja2** (Templates HTML)
+* **Pydantic** (Validación de datos)
+* **UV** (Gestor de dependencias ultra rápido)
+
+## 📦 Estructura de un Producto:
+Cada vez que guardamos un producto, Pydantic asegura que tenga este formato antes de entrar en nuestro "diccionario":
+- `nombre`: string
+- `precio`: float (decimal)
+- `correo`: string (email validado)
+
+![Captura del Inventario](./app/InventarioFastAPI.png)
+
+## 📦 El archivo `__init__.py`
+En Python, la presencia de un archivo llamado `__init__.py` dentro de una carpeta transforma ese directorio en algo especial:
+
+* **¿Qué hace?**: Transforma la carpeta en un **Paquete de Python**"*.
+* **¿Para qué sirve?**: Permite que otros archivos del proyecto puedan **importar** el código que hay dentro de esa carpeta. Sin este archivo, Python a menudo no "ve" las subcarpetas como módulos usables.
+* **Contenido**: Normalmente se deja **totalmente vacío**.
 
 ## 📂 Estructura del Proyecto
 
