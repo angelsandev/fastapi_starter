@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ titulo }}</title>
-    <style>
-        body { font-family: sans-serif; margin: 40px; background: #f4f4f9; }
-        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h1 { color: #4f46e5; }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
 </head>
 <body>
-    <div class="card">
-        <h1>{{ mensaje }}</h1>
-        <p>Bienvenido a la interfaz visual de mi proyecto FastAPI.</p>
+    <div class="container">
+        <h1>Bienvenido, {{ usuario }}</h1>
+        <p>FastAPI Starter de arquitectura limpia.</p>
+        
+        <h3>Tecnologías configuradas:</h3>
+        <ul>
+            {% for tech in tecnologias %}
+                <li>{{ tech }}</li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>

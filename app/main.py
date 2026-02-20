@@ -1,19 +1,28 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 
-app.title = "Proyecto EAN | Python FastAPI"
-app.version = "0.1.0"
 
-@app.get("/")
-def read_root():
-    return {"Hello": "YO"}
-
-@app.get("/", tags=["Home"])
-def home():
-    return {"Menú Home"}
+app.mount("/static", StaticFiles(directory="app/static"), name="static")    # Montar el CSS
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str | None = None):
-    return {"item_id": item_id, "q": q}
+templates = Jinja2Templates(directory="app/templates")                      # Config Plantilla JINJA
+
+@app.get("/", response_class=HTMLResponse)
+async def read_item(request: Request):
+    
+    datos_ejemplo = {                                                       # Simular BBDD
+        "titulo": "Mi Starter Pro",
+        "usuario": "angelsandev",
+        "tecnologias": ["FastAPI", "Jinja2", "Python", "SQLAlchemy"]
+    }
+    
+    
+    return templates.TemplateResponse(                                      # Enviar datos a plantilla index.html
+        request=request, 
+        name="index.html", 
+        context=datos_ejemplo
+    )
